@@ -18,4 +18,4 @@ jobs:
           registry: registry.unchain.io
           repository: the-new-fork/bcwm
           tag_with_ref: true
-          add_git_labels: true
+          tag_with_sha: true

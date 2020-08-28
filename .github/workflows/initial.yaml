@@ -15,6 +15,6 @@ jobs:
         with:
           username: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_USER }}
           password: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }}
-          registry: registry.unchain.io/
+          registry: registry.unchain.io
           repository: thenewfork/bcwm
           tag_with_ref: true

@@ -13,8 +13,8 @@ jobs:
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_USER }}
+          username: robot$thenewfork-bcmw-repo
           password: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }}
           registry: registry.unchain.io
-          repository: thenewfork/bcwm
+          repository: the-new-fork/bcwm
           tag_with_ref: true

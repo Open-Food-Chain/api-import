@@ -1,0 +1,20 @@
+name: Publish Docker image
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  push_to_registry:
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_USER }}
+          password: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }}
+          registry: registry.unchain.io/
+          repository: thenewfork/bcwm
+          tag_with_ref: true

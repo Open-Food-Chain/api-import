@@ -44,3 +44,8 @@ class Bottler(Model):
     pon = CharField(max_length=10)
     # (purchase order position) NONE
     pop = CharField(max_length=3)
+    #######################################################
+    # address and transaction import integrity
+    import_integrity_address = CharField(max_length=33, unique=True)
+    import_preprocess_tx = CharField(max_length=64, unique=True)
+    import_postprocess_tx = CharField(max_length=64, unique=True)

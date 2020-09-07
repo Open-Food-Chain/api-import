@@ -16,6 +16,6 @@ jobs:
           username: robot$thenewfork-bcmw-repo
           password: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }}
           registry: registry.unchain.io
-          repository: the-new-fork/bcwm
+          repository: the-new-fork/import-api
           tag_with_ref: true
           tag_with_sha: true

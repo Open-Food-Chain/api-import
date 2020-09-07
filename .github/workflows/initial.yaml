@@ -1,21 +1,15 @@
-name: Publish Docker image
-on:
-  push:
-    branches:
-      - '*'
+name: Publish docker image
+on: [push]
+
 jobs:
-  push_to_registry:
-    name: Push Docker image to Unchain Registry
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - run: git pull
+      - name: Build docker image
+        run: docker build -t registry.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) .
+      - name: Docker login
+        run: docker login -u 'robot$thenewfork-bcmw-repo' -p ${{ secrets.REGISTRY_PASSWORD }} registry.unchain.io
       - name: Push to unchain registry
-        uses: docker/build-push-action@v1
-        with:
-          username: robot$thenewfork-bcmw-repo
-          password: ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }}
-          registry: registry.unchain.io
-          repository: the-new-fork/import-api
-          tag_with_ref: true
-          tag_with_sha: true
+        run: docker push registry.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h)

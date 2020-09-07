@@ -6,7 +6,7 @@ from django.db.models import (
     JSONField,
     OneToOneField,
     UUIDField,
-    DO_NOTHING
+    CASCADE
 )
 import uuid
 
@@ -58,4 +58,4 @@ class Integrity(Model):
     integrity_address = CharField(max_length=34, unique=True)
     integrity_pre_tx = CharField(max_length=64, null=True)
     integrity_post_tx = CharField(max_length=64, null=True)
-    batch = OneToOneField(Batch, related_name="integrity_details",  on_delete=DO_NOTHING, null=True)
+    batch = OneToOneField(Batch, related_name="integrity_details",  on_delete=CASCADE, null=True)

@@ -16,8 +16,8 @@ python -m pip install -r requirements.txt
 cd src
 python manage.py runserver 8777
 ```
-Another terminal, edit file as required
+Another terminal, randomly generated stuff
 ```
 cd scripts
-./noauth-post.sh
+./noauth-batch-flow.sh
 ```

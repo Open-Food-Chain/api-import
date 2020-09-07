@@ -3,15 +3,18 @@ from django.db.models import (
     CharField,
     DateField,
     IntegerField,
-    UUIDField
+    JSONField,
+    OneToOneField,
+    UUIDField,
+    DO_NOTHING
 )
 import uuid
 
 # Create your models here.
 
 
-class Bottler(Model):
-    uuid = UUIDField(default=uuid.uuid4, editable=False)
+class Batch(Model):
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     ########################################################
     # field names acronymized from spreadsheet sample (full name in comment)
     # https://discordapp.com/channels/597725255506722839/746326766137638942/747706457952223252
@@ -44,3 +47,15 @@ class Bottler(Model):
     pon = CharField(max_length=10)
     # (purchase order position) NONE
     pop = CharField(max_length=3)
+    ##############################
+    # integrity address & tx
+    raw_json = JSONField(default=dict)
+    # integrity_details = OneToOneField(Integrity, related_name="batch",  on_delete=DO_NOTHING, null=True)
+
+
+class Integrity(Model):
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    integrity_address = CharField(max_length=33, unique=True)
+    integrity_pre_tx = CharField(max_length=64, null=True)
+    integrity_post_tx = CharField(max_length=64, null=True)
+    batch = OneToOneField(Batch, related_name="integrity_details",  on_delete=DO_NOTHING, null=True)

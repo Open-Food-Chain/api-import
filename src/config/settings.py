@@ -28,7 +28,8 @@ DEBUG = True
 
 DJANGO_HOST = os.environ.get('DJANGO_HOST')
 
-ALLOWED_HOSTS = [DJANGO_HOST] if DJANGO_HOST else []
+# ALLOWED_HOSTS = [DJANGO_HOST] if DJANGO_HOST else []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -84,6 +85,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'postgres',
+#        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+#        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+#        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
+#        'PORT': os.environ.get('POSTGRES_PORT', 5432),
+#    }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

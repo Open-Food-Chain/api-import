@@ -55,7 +55,7 @@ class Batch(Model):
 
 class Integrity(Model):
     id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    integrity_address = CharField(max_length=33, unique=True)
+    integrity_address = CharField(max_length=34, unique=True)
     integrity_pre_tx = CharField(max_length=64, null=True)
     integrity_post_tx = CharField(max_length=64, null=True)
     batch = OneToOneField(Batch, related_name="integrity_details",  on_delete=DO_NOTHING, null=True)

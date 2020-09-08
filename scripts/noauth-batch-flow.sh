@@ -5,8 +5,8 @@ echo $BATCH_ID_1
 sleep 1
 
 
-# length 33 RINVALID+25random
-RANDOM_INTEGRITY_ADDRESS=RINVALID$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 25 | head -n 1)
+# length 34 RINVALID+26random
+RANDOM_INTEGRITY_ADDRESS=RINVALID$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 26 | head -n 1)
 
 INTEGRITY_ID_1=$(curl -X POST -H "Content-Type: application/json" http://localhost:8777/integrity/ -d "{\"integrity_address\": \"${RANDOM_INTEGRITY_ADDRESS}\", \"batch\": \"${BATCH_ID_1}\"}" | jq -r '.id')
 

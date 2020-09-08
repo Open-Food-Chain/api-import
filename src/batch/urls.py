@@ -7,5 +7,6 @@ router.register('batch', views.BatchView)
 router.register('integrity', views.IntegrityView)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('batch/new/', views.BatchView.as_view({'get': 'require_integrity'}))
 ]

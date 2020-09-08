@@ -8,8 +8,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: git pull
       - name: Build docker image
-        run: docker build -t registry.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) .
+        run: docker build -t registry.dgo.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) .
       - name: Docker login
-        run: docker login -u 'robot$thenewfork-bcmw-repo' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} registry.unchain.io
+        run: docker login -u 'robot$thenewfork' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} registry.unchain.io
       - name: Push to unchain registry
-        run: docker push registry.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h)
+        run: docker push registry.dgo.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h)

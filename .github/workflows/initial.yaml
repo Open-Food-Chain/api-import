@@ -3,13 +3,17 @@ on: [push]
 
 jobs:
   build:
+    env:
+      REGISTRY: registry.dgo.unchain.io
+      PROJECT: thenewfork
+      REPOSITORY: import-api
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: git pull
       - name: Build docker image
-        run: docker build -t registry.dgo.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) .
+        run: docker build -t $REGISTRY/$PROJECT/$REPOSITORY:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) .
       - name: Docker login
-        run: docker login -u 'robot$thenewfork' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} registry.dgo.unchain.io
+        run: docker login -u 'robot$thenewfork' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} $REGISTRY
       - name: Push to unchain registry
-        run: docker push registry.dgo.unchain.io/the-new-fork/import-api:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h)
+        run: docker push $REGISTRY/$PROJECT/$REPOSITORY:$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h)

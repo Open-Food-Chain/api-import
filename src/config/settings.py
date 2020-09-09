@@ -28,8 +28,7 @@ DEBUG = True
 
 DJANGO_HOST = os.environ.get('DJANGO_HOST')
 
-# ALLOWED_HOSTS = [DJANGO_HOST] if DJANGO_HOST else []
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [DJANGO_HOST] if DJANGO_HOST else []
 
 # Application definition
 
@@ -88,7 +87,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
         'HOST': os.environ.get('POSTGRES_HOST', 'db'),

@@ -1,5 +1,5 @@
 #!/bin/bash
-API_HOST="http://172.29.0.3:8777/"
+API_HOST="http://172.29.0.4444:8777/"
 
 for i in {1..2}
 do

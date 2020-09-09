@@ -1,7 +1,10 @@
 FROM python:3.8
-COPY requirements.txt requirements.txt
+ENV PYTHONUNBUFFERED 1
+COPY requirements*.txt ./
+ARG ENV
+RUN if [ "$ENV" = "dev" ] ; then pip install -r requirements-dev.txt ; fi
 RUN pip install -r requirements.txt
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /code
+WORKDIR /code
 
-COPY src /app
+COPY src /code

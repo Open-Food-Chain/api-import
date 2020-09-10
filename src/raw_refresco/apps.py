@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class RawRefrescoConfig(AppConfig):
-    name = 'rawrefresco'
+    name = 'raw_refresco'

@@ -8,5 +8,5 @@ router.register('raw/refresco/integrity', views.RawRefrescoIntegrityView)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('raw/refresco/new/', views.BatchView.as_view({'get': 'require_integrity'}))
+    path('raw/refresco/new/', views.RawRefrescoView.as_view({'get': 'require_integrity'}))
 ]

@@ -7,7 +7,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 
-class IntegrityView(viewsets.ModelViewSet):
+class RawRefrescoIntegrityView(viewsets.ModelViewSet):
     queryset = Integrity.objects.all()
     serializer_class = IntegritySerializer
 

@@ -13,7 +13,7 @@ import uuid
 # Create your models here.
 
 
-class Batch(Model):
+class RawRefresco(Model):
     id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     ########################################################
     # field names acronymized from spreadsheet sample (full name in comment)
@@ -58,4 +58,4 @@ class Integrity(Model):
     integrity_address = CharField(max_length=34, unique=True)
     integrity_pre_tx = CharField(max_length=64, null=True)
     integrity_post_tx = CharField(max_length=64, null=True)
-    batch = OneToOneField(Batch, related_name="integrity_details",  on_delete=CASCADE, null=True)
+    batch = OneToOneField(RawRefresco, related_name="integrity_details",  on_delete=CASCADE, null=True)

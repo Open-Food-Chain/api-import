@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Batch, Integrity
+from .models import RawRefresco, Integrity
 
 
 class IntegritySerializer(serializers.ModelSerializer):
@@ -15,5 +15,5 @@ class BatchSerializer(serializers.ModelSerializer):
     integrity_details = IntegritySerializer(read_only=True)
 
     class Meta:
-        model = Batch
+        model = RawRefresco
         fields = ('id', 'anfp', 'dfp', 'bnfp', 'pds', 'pde', 'jds', 'jde', 'bbd', 'pc', 'pl', 'rmn', 'pon', 'pop', 'raw_json', 'integrity_details')

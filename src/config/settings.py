@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'raw_refresco.apps.RawRefrescoConfig',
+    'batch.apps.BatchConfig',
 ]
 
 MIDDLEWARE = [

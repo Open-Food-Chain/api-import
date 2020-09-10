@@ -10,7 +10,7 @@ class IntegritySerializer(serializers.ModelSerializer):
         fields = ('id', 'integrity_address', 'integrity_pre_tx', 'integrity_post_tx', 'batch')
 
 
-class BatchSerializer(serializers.ModelSerializer):
+class RawRefrescoSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
     integrity_details = IntegritySerializer(read_only=True)
 

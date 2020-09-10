@@ -1,18 +1,18 @@
 from rest_framework import serializers
-from .models import RawRefresco, Integrity
+from .models import RawRefresco, RawRefrescoIntegrity
 
 
-class IntegritySerializer(serializers.ModelSerializer):
+class RawRefrescoIntegritySerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
 
     class Meta:
-        model = Integrity
+        model = RawRefrescoIntegrity
         fields = ('id', 'integrity_address', 'integrity_pre_tx', 'integrity_post_tx', 'batch')
 
 
 class RawRefrescoSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
-    integrity_details = IntegritySerializer(read_only=True)
+    integrity_details = RawRefrescoIntegritySerializer(read_only=True)
 
     class Meta:
         model = RawRefresco

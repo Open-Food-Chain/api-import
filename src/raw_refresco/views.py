@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import RawRefresco, Integrity
-from .serializers import RawRefrescoSerializer, IntegritySerializer
+from .models import RawRefresco, RawRefrescoIntegrity
+from .serializers import RawRefrescoSerializer, RawRefrescoIntegritySerializer
 # from rest_framework.views import APIView
 # from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.decorators import action
@@ -8,8 +8,8 @@ from rest_framework.response import Response
 
 
 class RawRefrescoIntegrityView(viewsets.ModelViewSet):
-    queryset = Integrity.objects.all()
-    serializer_class = IntegritySerializer
+    queryset = RawRefrescoIntegrity.objects.all()
+    serializer_class = RawRefrescoIntegritySerializer
 
 
 class RawRefrescoView(viewsets.ModelViewSet):

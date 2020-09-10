@@ -53,7 +53,7 @@ class RawRefresco(Model):
     # integrity_details = OneToOneField(Integrity, related_name="batch",  on_delete=DO_NOTHING, null=True)
 
 
-class Integrity(Model):
+class RawRefrescoIntegrity(Model):
     id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     integrity_address = CharField(max_length=34, unique=True)
     integrity_pre_tx = CharField(max_length=64, null=True)

@@ -4,7 +4,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('raw/refresco', views.RawRefrescoView)
-router.register('raw/refresco/integrity', views.RawRefrescoIntegrityView)
+router.register('raw/refresco-integrity', views.RawRefrescoIntegrityView)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -27,8 +27,13 @@ SECRET_KEY = 'q*3a=47yx(@pp*9xnz0u#9%j0i%e!+^u7gi#)d&o6c)b%oamw9'
 DEBUG = True
 
 DJANGO_HOST = os.environ.get('DJANGO_HOST')
+DJANGO_DOMAINS = os.environ.get('DJANGO_DOMAINS')
 
 ALLOWED_HOSTS = [DJANGO_HOST] if DJANGO_HOST else []
+
+if DJANGO_DOMAINS:
+    DJANGO_DOMAINS = DJANGO_DOMAINS.split(',')
+    ALLOWED_HOSTS+= DJANGO_DOMAINS
 
 # Application definition
 

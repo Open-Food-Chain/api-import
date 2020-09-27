@@ -17,6 +17,6 @@ jobs:
       - name: Build docker image
         run: docker build -t $REGISTRY/$PROJECT/$REPOSITORY:$(cat IMAGE_TAG) .
       - name: Docker login
-        run: docker login -u '$REGISTRY_USER' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} $REGISTRY
+        run: docker login -u $REGISTRY_USER -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} $REGISTRY
       - name: Push to unchain registry
         run: docker push $REGISTRY/$PROJECT/$REPOSITORY:$(cat IMAGE_TAG)

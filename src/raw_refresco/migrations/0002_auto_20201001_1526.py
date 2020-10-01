@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='rawrefrescointegrity',
             name='batch_raddress',
-            field=models.CharField(default='R12345123451234512345123459999', max_length=34, unique=True),
+            field=models.CharField(max_length=34, unique=True),
             preserve_default=False,
         ),
         migrations.AddField(

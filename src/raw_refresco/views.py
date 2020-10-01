@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import RawRefresco, RawRefrescoIntegrity
-from .serializers import RawRefrescoSerializer, RawRefrescoIntegritySerializer
+from .models import RawRefresco, RawRefrescoIntegrity, TimestampTransaction
+from .serializers import RawRefrescoSerializer, RawRefrescoIntegritySerializer, TimestampTransactionSerializer
 # from rest_framework.views import APIView
 # from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.decorators import action
@@ -10,6 +10,11 @@ from rest_framework.response import Response
 class RawRefrescoIntegrityView(viewsets.ModelViewSet):
     queryset = RawRefrescoIntegrity.objects.all()
     serializer_class = RawRefrescoIntegritySerializer
+
+
+class TimestampTransactionView(viewsets.ModelViewSet):
+    queryset = TimestampTransaction.objects.all()
+    serializer_class = TimestampTransactionSerializer
 
 
 class RawRefrescoView(viewsets.ModelViewSet):

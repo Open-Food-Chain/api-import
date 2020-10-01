@@ -2,6 +2,7 @@ from django.db.models import (
     Model,
     CharField,
     DateField,
+    ForeignKey,
     IntegerField,
     JSONField,
     OneToOneField,
@@ -58,4 +59,15 @@ class RawRefrescoIntegrity(Model):
     integrity_address = CharField(max_length=34, unique=True)
     integrity_pre_tx = CharField(max_length=64, null=True)
     integrity_post_tx = CharField(max_length=64, null=True)
+    batch_lot_raddress = CharField(max_length=34, unique=True)
     batch = OneToOneField(RawRefresco, related_name="integrity_details",  on_delete=CASCADE, null=True)
+
+
+class TimestampTransaction(Model):
+    tsintegrity = ForeignKey(RawRefrescoIntegrity, related_name="tx_list", on_delete=CASCADE, null=True)
+    sender_raddress = CharField(max_length=34)
+    sender_name = CharField(max_length=255, null=True, blank=True)
+    txid = CharField(max_length=64, unique=True)
+
+    def __str__(self):
+        return self.txid

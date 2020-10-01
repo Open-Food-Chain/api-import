@@ -1,21 +1,24 @@
 name: Publish docker image
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     env:
       REGISTRY: registry.unchain.io
       PROJECT: thenewfork
       REPOSITORY: import-api
+      REGISTRY_USER: robot$thenewfork-never-expire
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: git pull
       - name: create docker tag
-        run: echo $(date +%Y%m%d-%H%M%S)-$(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) > IMAGE_TAG
+        run: echo $(git rev-parse --abbrev-ref HEAD)-$(git log -1 --pretty=format:%h) > IMAGE_TAG
       - name: Build docker image
         run: docker build -t $REGISTRY/$PROJECT/$REPOSITORY:$(cat IMAGE_TAG) .
       - name: Docker login
-        run: docker login -u 'robot$thenewfork-never-expire' -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} $REGISTRY
+        run: docker login -u $REGISTRY_USER -p ${{ secrets.UNCHAIN_DOCKER_REGISTRY_TOKEN }} $REGISTRY
       - name: Push to unchain registry
         run: docker push $REGISTRY/$PROJECT/$REPOSITORY:$(cat IMAGE_TAG)

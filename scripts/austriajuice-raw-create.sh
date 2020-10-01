@@ -18,7 +18,7 @@ do
 	RANDOM_VAL_DFP="Description here"
 	RANDOM_VAL_BNFP=$(cat /dev/urandom | tr -dc '0-9' | fold -w 6 | head -n 1)
 	RANDOM_VAL_PC="PO"
-	RANDOM_VAL_PL="Somewhere"
+	RANDOM_VAL_PL="Bialobrzegi"
 	RANDOM_VAL_RMN=11200100520
 	RANDOM_VAL_PON=$(cat /dev/urandom | tr -dc '0-9' | fold -w 10 | head -n 1)
 	RANDOM_VAL_POP=$(cat /dev/urandom | tr -dc '1-9' | fold -w 3 | head -n 1)

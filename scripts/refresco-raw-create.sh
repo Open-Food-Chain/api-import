@@ -1,6 +1,6 @@
 #!/bin/bash
 #API_HOST="http://172.29.0.4:8777/"
-API_HOST="http://localhost:8100/"
+API_HOST="http://localhost:8103/"
 
 for i in {1..1}
 do
@@ -9,21 +9,21 @@ do
 	PROD_RANDOM_START_DAY=$(cat /dev/urandom | tr -dc '1-2' | fold -w 2 | head -n 1)
         RANDOM_1=$(cat /dev/urandom | tr -dc '1-8' | fold -w 1 | head -n 1)
         PROD_END_DAY=$((PROD_RANDOM_START_DAY + RANDOM_1))
-        PROD_MONTH="01"
+        PROD_MONTH="02"
         PROD_YEAR="2020"
-	BBD_MONTH="03"
+	BBD_MONTH="05"
 
 	# DATA
 	RANDOM_VAL_ANFP=18505100
 	RANDOM_VAL_DFP="Description here"
 	RANDOM_VAL_BNFP=$(cat /dev/urandom | tr -dc '0-9' | fold -w 6 | head -n 1)
-	RANDOM_VAL_PC="PO"
-	RANDOM_VAL_PL="Somewhere"
+	RANDOM_VAL_PC="DE"
+	RANDOM_VAL_PL="Herrath"
 	RANDOM_VAL_RMN=11200100520
 	RANDOM_VAL_PON=$(cat /dev/urandom | tr -dc '0-9' | fold -w 10 | head -n 1)
 	RANDOM_VAL_POP=$(cat /dev/urandom | tr -dc '1-9' | fold -w 3 | head -n 1)
-	JDS=${PROD_RANDOM_START_DAY} # only because it is january
-	JDE=${PROD_END_DAY}
+	JDS=$((PROD_RANDOM_START_DAY + 31)) 
+	JDE=$((PROD_END_DAY + 31))
 	PDS="${PROD_YEAR}-${PROD_MONTH}-${PROD_RANDOM_START_DAY}"
 	PDE="${PROD_YEAR}-${PROD_MONTH}-${PROD_END_DAY}"
 	BBD="${PROD_YEAR}-${BBD_MONTH}-${PROD_END_DAY}"

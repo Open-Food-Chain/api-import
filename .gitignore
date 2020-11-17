@@ -58,3 +58,5 @@ target/
 
 # src/db.sqlite3
 src/db.sqlite3
+
+.venv

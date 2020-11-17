@@ -26,7 +26,7 @@ class RawRefrescoTests(APITestCase):
         return response
 
     @pytest.mark.django_db
-    def test_post_and_get_drone_category(self):
+    def test_post_and_get_rawrefresco(self):
         """
         Ensure we can create a new DroneCategory and then retrieve it
         """

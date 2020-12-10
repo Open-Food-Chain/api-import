@@ -22,3 +22,4 @@ pytz==2020.1              # via -r requirements.in, django
 six==1.15.0               # via packaging
 sqlparse==0.3.1           # via -r requirements.in, django
 toml==0.10.2              # via pytest
+sentry-sdk==0.19.4        # manually added becaues requirements.in file & pip-tools is missing from repo

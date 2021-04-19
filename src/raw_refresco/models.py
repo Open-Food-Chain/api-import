@@ -49,6 +49,7 @@ class RawRefresco(Model):
     # (purchase order position) NONE
     pop = CharField(max_length=3)
     ##############################
+    mass = IntegerField(blank=True, null=True)
     # integrity address & tx
     raw_json = JSONField(default=dict)
     # integrity_details = OneToOneField(Integrity, related_name="batch",  on_delete=DO_NOTHING, null=True)

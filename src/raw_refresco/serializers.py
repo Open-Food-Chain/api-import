@@ -40,4 +40,4 @@ class RawRefrescoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RawRefresco
-        fields = ('id', 'anfp', 'dfp', 'bnfp', 'pds', 'pde', 'jds', 'jde', 'bbd', 'pc', 'pl', 'rmn', 'pon', 'pop', 'raw_json', 'integrity_details')
+        fields = ('id', 'anfp', 'dfp', 'bnfp', 'pds', 'pde', 'jds', 'jde', 'bbd', 'pc', 'pl', 'rmn', 'pon', 'pop', 'mass', 'raw_json', 'integrity_details')

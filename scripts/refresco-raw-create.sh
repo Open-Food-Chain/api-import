@@ -1,6 +1,7 @@
 #!/bin/bash
 API_HOST="http://172.29.0.4:8777/"
 #API_HOST="http://localhost:8103/"
+#API_HOST="https://refresco.import-api.gcp.staging.thenewfork.com/"
 
 for i in {1..1}
 do

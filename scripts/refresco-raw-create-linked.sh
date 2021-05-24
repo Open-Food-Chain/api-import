@@ -1,6 +1,9 @@
 #!/bin/bash
-API_HOST="http://172.29.0.4:8777/"
+#API_HOST="http://172.29.0.4:8777/"
 #API_HOST="http://localhost:8103/"
+API_HOST="https://refresco.import-api.gcp.staging.thenewfork.com/"
+GREETING="**BATCH DATA**"
+ORG="R"
 
 LINKED_PON=$1
 
@@ -34,6 +37,12 @@ do
 	echo ""
 	echo curl -X POST -H "Content-Type: application/json" ${API_HOST}raw/refresco/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"raw_json\": \"${RAW_JSON}\"}"
 	echo ""
-	curl -X POST -H "Content-Type: application/json" ${API_HOST}raw/refresco/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"raw_json\": \"${RAW_JSON}\"}"
+	RESPONSE=$(curl -X POST -H "Content-Type: application/json" ${API_HOST}raw/refresco/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"raw_json\": \"${RAW_JSON}\"}")
+
+	echo ${RESPONSE}
+        id=$(echo ${RESPONSE} | jq -r '.id')
+        pon=$(echo ${RESPONSE} | jq -r '.pon')
+	curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${GREETING}\n(po) ${pon} (jds) ${JDS} (bbd) ${BBD} ${ORG}\n${API_HOST}raw/refresco/${id}\"}" https://discord.com/api/webhooks/841577243751088148/0aiGgeGATYNaG0hj-dFo5chxwp3Avrfq1Xj46-G_MLICX2gm_ROTKmPip8oCzuaL3YUd
+
 	sleep 1
 done

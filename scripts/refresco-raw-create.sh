@@ -2,6 +2,7 @@
 API_HOST="http://172.29.0.4:8777/"
 #API_HOST="http://localhost:8103/"
 #API_HOST="https://refresco.import-api.gcp.staging.thenewfork.com/"
+#API_HOST="http://116.202.113.23:8777/"
 
 for i in {1..1}
 do

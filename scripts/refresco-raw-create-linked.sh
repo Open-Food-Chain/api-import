@@ -1,4 +1,5 @@
 #!/bin/bash
+source discord_url.txt
 #API_HOST="http://172.29.0.4:8777/"
 #API_HOST="http://localhost:8103/"
 API_HOST="https://refresco.import-api.gcp.staging.thenewfork.com/"
@@ -42,7 +43,7 @@ do
 	echo ${RESPONSE}
         id=$(echo ${RESPONSE} | jq -r '.id')
         pon=$(echo ${RESPONSE} | jq -r '.pon')
-	curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${GREETING}\n(po) ${pon} (jds) ${JDS} (bbd) ${BBD} ${ORG}\n${API_HOST}raw/refresco/${id}\"}" https://discord.com/api/webhooks/841577243751088148/0aiGgeGATYNaG0hj-dFo5chxwp3Avrfq1Xj46-G_MLICX2gm_ROTKmPip8oCzuaL3YUd
+	curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${GREETING}\n(po) ${pon} (jds) ${JDS} (bbd) ${BBD} ${ORG}\n${API_HOST}raw/refresco/${id}\"}" ${discord_url}
 
 	sleep 1
 done

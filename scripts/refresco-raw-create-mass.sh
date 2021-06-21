@@ -35,6 +35,6 @@ do
 	echo ""
 	echo curl -X POST -H "Content-Type: application/json" ${API_HOST}raw/refresco/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"mass\": \"${RANDOM_VAL_MASS}\", \"raw_json\": \"${RAW_JSON}\"}"
 	echo ""
-	curl -X POST -H "Content-Type: application/json" ${API_HOST}raw/refresco/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"mass\": \"${RANDOM_VAL_MASS}\", \"raw_json\": \"${RAW_JSON}\"}"
+	curl -X POST -H "Content-Type: application/json" ${API_HOST}batch/import/ -d "{ \"anfp\": \"${RANDOM_VAL_ANFP}\",\"dfp\": \"${RANDOM_VAL_DFP}\",\"bnfp\": \"${RANDOM_VAL_BNFP}\",\"pds\": \"${PDS}\",\"pde\": \"${PDE}\",\"jds\": ${JDS},\"jde\": ${JDE},\"bbd\": \"${BBD}\",\"pc\": \"${RANDOM_VAL_PC}\",\"pl\": \"${RANDOM_VAL_PL}\",\"rmn\": \"${RANDOM_VAL_RMN}\",\"pon\": \"${RANDOM_VAL_PON}\",\"pop\": \"${RANDOM_VAL_POP}\", \"mass\": \"${RANDOM_VAL_MASS}\", \"raw_json\": \"${RAW_JSON}\"}"
 	sleep 1
 done

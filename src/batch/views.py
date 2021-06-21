@@ -1,13 +1,20 @@
 from rest_framework import viewsets
-from .models import Batch, Integrity
-from .serializers import BatchSerializer, IntegritySerializer
+from .models import Batch, BatchIntegrity, TimestampTransaction
+from .serializers import BatchSerializer, BatchIntegritySerializer, TimestampTransactionSerializer
+# from rest_framework.views import APIView
+# from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 
-class IntegrityView(viewsets.ModelViewSet):
-    queryset = Integrity.objects.all()
-    serializer_class = IntegritySerializer
+class BatchIntegrityView(viewsets.ModelViewSet):
+    queryset = BatchIntegrity.objects.all()
+    serializer_class = BatchIntegritySerializer
+
+
+class TimestampTransactionView(viewsets.ModelViewSet):
+    queryset = TimestampTransaction.objects.all()
+    serializer_class = TimestampTransactionSerializer
 
 
 class BatchView(viewsets.ModelViewSet):
